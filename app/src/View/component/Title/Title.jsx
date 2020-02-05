@@ -29,7 +29,7 @@ class Title extends React.Component {
 
   render() {
     return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="primary" className="AppBar">
       <ToolBar>
         <Typography variant="h3" className="Title">
             Safe Trip

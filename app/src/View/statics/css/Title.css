@@ -4,8 +4,7 @@
 }
 
 .AppBar {
-  display: flex;
-  flex-direction: row;
+  border-radius: 0% 0% 25px 25px;
 }
 
 .Settings {
