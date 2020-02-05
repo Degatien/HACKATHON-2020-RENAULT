@@ -30,6 +30,8 @@ function publish() {
 export default function LinkButton(props) {
 
     return (
-        <Button style={{width: '20%'}} variant='contained' onClick={publish}> RESET</Button>
+        <div style={{ width: 300, height: 300, margin: 'auto', display: 'flex', flexDirection: 'column', borderRadius: '3%', border: '1px solid grey', boxShadow: '10px 5px 5px grey' }}>
+            <Button style={{width: '20%', marginLeft: 'auto', marginRight: 'auto'}} variant='contained' onClick={publish}> RESET</Button>
+        </div>
     )
 }
