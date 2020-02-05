@@ -75,6 +75,11 @@ class MqttClient {
     const topic = `${TEAM}/prod/user/mission`;
     this.client.publish(topic, JSON.stringify(payload).toString());
   }
+
+  breakTaxi(id) {
+    const topic = `${TEAM}/prod/environment/change/breakdown`;
+    this.client.publish(topic, JSON.stringify({ vehicle: id }).toString());
+  }
 }
 
 export default new MqttClient();
