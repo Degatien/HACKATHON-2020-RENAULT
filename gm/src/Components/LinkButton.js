@@ -8,7 +8,7 @@ export default function LinkButton(props) {
 
     <Button
       variant="contained"
-      onClick={onClickFunction}
+      onClick={() => onClickFunction()}
     >
       {" "}
       RESET

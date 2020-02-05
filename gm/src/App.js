@@ -9,11 +9,11 @@ import OpenOrCloseSubway from './Components/OpenOrCloseSubway'
 function App() {
   return (
     <div style={{ display:'flex', flexDirection:'column', marginTop: '20px'}} >
-      <LinkButton variant="full" onClickFunction={mqqtClient.reset()}/>
+      <LinkButton variant="full" onClickFunction={() => mqqtClient.reset()}/>
       <Teleport/>
       <ChangeTrafficCondition/>
       <OpenOrCloseSubway/>
-    </div>
+</div>
   )
 }
 
