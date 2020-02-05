@@ -8,6 +8,7 @@ import Map from './Map/Map'
 import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
 import { resetCity } from '../../Mqtt/publisher';
+import '../../Mqtt/controller';
 
 const theme = createMuiTheme({
   overrides: {
