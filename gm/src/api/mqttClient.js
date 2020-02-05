@@ -54,6 +54,14 @@ class MqttClient {
     const topic = `${TEAM}/prod/city/morph/roads_status`;
     this.client.publish(topic, JSON.stringify(roads).toString());
   }
+
+  updateWeather(weather) {
+    const topic = `${TEAM}/prod/context/change/weather`;
+    this.client.publish(
+      topic,
+      JSON.stringify({ condition: weather }).toString()
+    );
+  }
 }
 
 export default new MqttClient();

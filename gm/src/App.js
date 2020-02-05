@@ -6,11 +6,16 @@ import ChangeTrafficCondition from "./Components/ChangeTrafficCondition";
 import mqttClient from "./api/mqttClient";
 import OpenOrCloseSubway from "./Components/OpenOrCloseSubway";
 import CloseOrOpenRoad from "./Components/CloseOrOpenRoad";
-import ChangeWeather from './Components/ChangeWeather'
+import ChangeWeather from "./Components/ChangeWeather";
 function App() {
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", marginTop: "20px" }}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridGap: "3rem",
+        gridAutoRows: "minmax(100px, auto)"
+      }}
     >
       <LinkButton
         variant="full"
@@ -26,8 +31,9 @@ function App() {
         updateMetroLine={mqttClient.updateMetroLine.bind(mqttClient)}
       />
       <CloseOrOpenRoad updateRoads={mqttClient.updateRoads.bind(mqttClient)} />
-      <ChangeWeather/>
-
+      <ChangeWeather
+        updateWeather={mqttClient.updateWeather.bind(mqttClient)}
+      />
     </div>
   );
 }

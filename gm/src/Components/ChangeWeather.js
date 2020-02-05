@@ -17,14 +17,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function OpenOrCloseSubway(props) {
+  const { updateWeather } = props;
   const classes = useStyles();
   const [weather, setWeather] = React.useState("close");
 
-  const handleChangeWeather= event => {
+  const handleChangeWeather = event => {
     setWeather(event.target.value);
   };
 
 
+  const handleValidate = () => {
+    updateWeather(weather);
+  }
 
   return (
     <div
@@ -59,7 +63,7 @@ export default function OpenOrCloseSubway(props) {
           <MenuItem value={"normal"}>Normal</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" >
+      <Button variant="contained" onClick={handleValidate} >
         Validate
       </Button>
     </div>
