@@ -1,6 +1,4 @@
 import React from 'react'
-import Fab from '@material-ui/core/Fab'
-import Button from '@material-ui/core/Button'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NavigationIcon from '@material-ui/icons/Navigation'
 import SideTabs from './SideTabs/SideTabs'
@@ -10,15 +8,18 @@ import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
 import { moveCharacter, stopCharacter } from '../../Mqtt/publisher';
 import '../../Mqtt/controller';
+import '../statics/css/App.css';
+import '../../Mqtt/controller';
+import Title from './Title/Title';
+import purple from '@material-ui/core/colors/purple';
 
 const theme = createMuiTheme({
-  overrides: {
-    MuiDrawer: {
-      anchorLeft: {
-        marginTop: 64
-      }
-    }
-  }
+  palette: {
+    primary: purple,
+    secondary: {
+      main: '#7e57c2',
+    },
+  },
 });
 
 class App extends React.Component {
@@ -27,20 +28,14 @@ class App extends React.Component {
     this.state = {
       menuOpen: false,
       itineraries: ['itinerary 1', 'itinerary 2'],
-      currentTab: 0
+      currentTab: 0,
+      domain: "",
+      username: "",
+      password: "",
     }
-    this.openMenu = this.openMenu.bind(this)
-    this.closeMenu = this.closeMenu.bind(this)
     this.submitDirection = this.submitDirection.bind(this)
     this.selectItinerary = this.selectItinerary.bind(this)
     this.changeTab = this.changeTab.bind(this)
-  }
-
-  openMenu() {
-    this.setState({menuOpen: true})
-  }
-  closeMenu() {
-    this.setState({menuOpen: false})
   }
 
   submitDirection(direction) {
@@ -53,6 +48,14 @@ class App extends React.Component {
     console.log(`Itinerary "${itinerary}" selected.`)
   }
 
+  getBroker = (domain, username, password) => {
+    this.setState({
+      domain: domain,
+      username: username,
+      password: password
+    })
+  }
+
   changeTab(event, newTab) {
     this.setState({currentTab: newTab})
   }
@@ -62,20 +65,18 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Fab variant="extended" onClick={this.openMenu}>
-            <NavigationIcon />
-            Navigate
-          </Fab>
-
+          <Title 
+            getBroker={this.getBroker}
+          />
           <SideTabs currentTab={currentTab} changeTab={this.changeTab} />
           <Tab isOpen={currentTab === 0} content={"Eco"} />
           <Tab isOpen={currentTab === 1} content={"Confort"} />
           <Tab isOpen={currentTab === 2} content={"Rapidité"} />
-
-        </div>
+          </div>
       </ThemeProvider>
     )
   }
 }
+
 
 export default App
