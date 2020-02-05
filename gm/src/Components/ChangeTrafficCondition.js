@@ -18,18 +18,7 @@ export default function ChangeTrafficCondtion(props) {
     changeTrafficConditions(payload);
   };
   return (
-    <div
-      style={{
-        width: 300,
-        height: 200,
-        margin: "auto",
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: "3%",
-        border: "1px solid grey",
-        boxShadow: "10px 5px 5px grey"
-      }}
-    >
+    <div style={{ width: 300, height: 200, padding:10, marginTop:'15px', marginRight: 'auto', marginLeft:'auto', display: 'flex', flexDirection: 'column', borderRadius: '3%', border: '1px solid grey', boxShadow: '10px 5px 5px grey' }}>
       <h3> Change Traffic Conditions</h3>
 
       <TextField

@@ -39,7 +39,7 @@ export default function Teleport(props) {
   }
 
   return (
-    <div style={{ width: 300, height: 300, margin: 'auto', display: 'flex', flexDirection: 'column', borderRadius: '3%', border: '1px solid grey', boxShadow: '10px 5px 5px grey' }}>
+    <div style={{ width: 300, height: 300, padding:10, marginTop:'15px', marginRight: 'auto', marginLeft:'auto', display: 'flex', flexDirection: 'column', borderRadius: '3%', border: '1px solid grey', boxShadow: '10px 5px 5px grey' }}>
       <h3> Teleport</h3>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Transport</InputLabel>

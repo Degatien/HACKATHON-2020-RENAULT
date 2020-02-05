@@ -39,7 +39,10 @@ export default function OpenOrCloseSubway(props) {
       style={{
         width: 300,
         height: 230,
-        margin: "auto",
+        padding:10,
+        marginTop:'15px', 
+        marginRight: 'auto', 
+        marginLeft:'auto',
         display: "flex",
         flexDirection: "column",
         borderRadius: "3%",
@@ -55,7 +58,7 @@ export default function OpenOrCloseSubway(props) {
       />
 
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Transport</InputLabel>
+        <InputLabel id="demo-simple-select-label">Open Or Close</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
