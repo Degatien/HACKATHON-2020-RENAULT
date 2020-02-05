@@ -27,10 +27,10 @@ export default function Teleport(props) {
     setTransport(event.target.value);
   };
   const handleChangeXCoordinate = event => {
-    setTransport(event.target.value);
+    setXCoordinate(event.target.value);
   };
   const handleChangeYCoordinate = event => {
-    setTransport(event.target.value);
+    setYCoordinate(event.target.value);
   };
 
   return (
