@@ -1,7 +1,7 @@
 import * as mqtt from "mqtt";
-const TEAM = "TEAM14";
+const TEAM = "team14";
 
-class MqqtClient {
+class MqttClient {
   constructor() {
     this.client = mqtt.connect(
       "wss://mr1dns3dpz5mjj.messaging.solace.cloud:8443/",
@@ -11,7 +11,7 @@ class MqqtClient {
       }
     );
     this.client.on("connect", () => {
-      console.log("MqqtClient is correctly connected");
+      console.log("MqttClient is correctly connected");
     });
 
     this.client.on("error", err => {
@@ -35,12 +35,13 @@ class MqqtClient {
       ],
       costs: [0.0, 0.0]
     };
-
+    console.log("Teleporting", payload);
     this.client.publish(topic, JSON.stringify(payload).toString());
   }
 
   changeTrafficConditions(roads) {
     const topic = `${TEAM}/prod/city/morph/traffic_conditions`;
+    console.log("Update Traffic Conditions", roads);
     this.client.publish(topic, JSON.stringify(roads).toString());
   }
 
@@ -55,4 +56,4 @@ class MqqtClient {
   }
 }
 
-export default new MqqtClient();
+export default new MqttClient();

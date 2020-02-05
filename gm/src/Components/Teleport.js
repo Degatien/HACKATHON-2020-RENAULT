@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Teleport(props) {
+  const { teleport } = props;
   const classes = useStyles();
   const [transport, setTransport] = React.useState('');
   const [xCoordinate, setXCoordinate] = React.useState('');
@@ -32,6 +33,10 @@ export default function Teleport(props) {
   const handleChangeYCoordinate = event => {
     setYCoordinate(event.target.value);
   };
+
+  const handleValidate = () => {
+    teleport(transport, xCoordinate, yCoordinate);
+  }
 
   return (
     <div style={{ width: 300, height: 300, margin: 'auto', display: 'flex', flexDirection: 'column', borderRadius: '3%', border: '1px solid grey', boxShadow: '10px 5px 5px grey' }}>
@@ -52,7 +57,7 @@ export default function Teleport(props) {
       </FormControl>
       <TextField label='xCoordinate' onChange={handleChangeXCoordinate}/>
       <TextField label='yCoordinate' onChange={handleChangeYCoordinate}/>
-      <Button variant='contained'>Validate</Button>
+      <Button variant='contained' onClick={handleValidate}>Validate</Button>
 
     </div>
 )
