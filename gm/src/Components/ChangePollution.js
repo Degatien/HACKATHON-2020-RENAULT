@@ -19,16 +19,11 @@ const useStyles = makeStyles(theme => ({
 export default function ChangeWeather(props) {
   const { updateWeather } = props;
   const classes = useStyles();
-  const [weather, setWeather] = React.useState("close");
+  const [pollution, setPollution] = React.useState("close");
 
-  const handleChangeWeather = event => {
-    setWeather(event.target.value);
+  const handleChangePolution = event => {
+    setPollution(event.target.value);
   };
-
-
-  const handleValidate = () => {
-    updateWeather(weather);
-  }
 
   return (
     <div
@@ -46,7 +41,7 @@ export default function ChangeWeather(props) {
         boxShadow: "10px 5px 5px grey"
       }}
     >
-      <h3> Set Weather</h3>
+      <h3> Set Pollution</h3>
      
 
       <FormControl className={classes.formControl}>
@@ -54,16 +49,14 @@ export default function ChangeWeather(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={weather}
-          onChange={handleChangeWeather}
+          value={pollution}
+          onChange={handleChangePolution}
         >
-          <MenuItem value={"snow"}>Snow</MenuItem>
-          <MenuItem value={"rain"}>Rain</MenuItem>
-          <MenuItem value={"heat wave"}>Heat wave</MenuItem>
           <MenuItem value={"normal"}>Normal</MenuItem>
+          <MenuItem value={"pollution peak"}>Pollution peak</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" onClick={handleValidate} >
+      <Button variant="contained"  >
         Validate
       </Button>
     </div>
