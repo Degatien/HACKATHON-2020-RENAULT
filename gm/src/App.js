@@ -10,7 +10,7 @@ import ChangeWeather from "./Components/ChangeWeather";
 import StartMission from "./Components/StartMission";
 import ChangePollution from "./Components/ChangePollution";
 import TaxiBreak from './Components/TaxiBreak'
-
+import SubwayJson from './Components/SubwayJson'
 function App() {
   return (
     <div
@@ -43,6 +43,7 @@ function App() {
         updateAirQuality={mqttClient.updateAirQuality.bind(mqttClient)}
       />
       <TaxiBreak/>
+      <SubwayJson/>
     </div>
   );
 }
