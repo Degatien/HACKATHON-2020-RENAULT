@@ -54,6 +54,32 @@ class MqttClient {
     const topic = `${TEAM}/prod/city/morph/roads_status`;
     this.client.publish(topic, JSON.stringify(roads).toString());
   }
+
+  updateWeather(weather) {
+    const topic = `${TEAM}/prod/context/change/weather`;
+    this.client.publish(
+      topic,
+      JSON.stringify({ condition: weather }).toString()
+    );
+  }
+
+  updateAirQuality(quality) {
+    const topic = `${TEAM}/prod/context/change/air`;
+    this.client.publish(
+      topic,
+      JSON.stringify({ condition: quality }).toString()
+    );
+  }
+
+  startMission(payload) {
+    const topic = `${TEAM}/prod/user/mission`;
+    this.client.publish(topic, JSON.stringify(payload).toString());
+  }
+
+  breakTaxi(id) {
+    const topic = `${TEAM}/prod/environment/change/breakdown`;
+    this.client.publish(topic, JSON.stringify({ vehicle: id }).toString());
+  }
 }
 
 export default new MqttClient();

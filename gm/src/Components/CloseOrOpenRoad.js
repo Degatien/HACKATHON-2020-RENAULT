@@ -90,7 +90,7 @@ export default function OpenOrCloseSubway(props) {
   return (
     <div
       style={{
-        width: 600,
+        width: 'auto',
         height: "auto",
         padding: "10px",
         marginTop: "15px",
