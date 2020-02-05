@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import LinkButton from "./Components/LinkButton";
 import Teleport from "./Components/Teleport";
 import ChangeTrafficCondition from "./Components/ChangeTrafficCondition";
 import mqttClient from "./api/mqttClient";
 import OpenOrCloseSubway from "./Components/OpenOrCloseSubway";
+import CloseOrOpenRoad from "./Components/CloseOrOpenRoad";
 function App() {
   return (
     <div
@@ -24,6 +24,7 @@ function App() {
       <OpenOrCloseSubway
         updateMetroLine={mqttClient.updateMetroLine.bind(mqttClient)}
       />
+      <CloseOrOpenRoad updateRoads={mqttClient.updateRoads.bind(mqttClient)} />
     </div>
   );
 }
