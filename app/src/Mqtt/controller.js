@@ -27,7 +27,7 @@ function onMissionArrived(payload) {
 
 const callbacks = new Map([
   ['team14/prod/environment/change/lines_state', onLineStateChange],
-  ['team14/prod/city/morph/roads_status', onRoadStatusChange],
+  ['team14/prod/environment/change/roads_status', onRoadStatusChange],
   ['team14/prod/user/objective-reached', onObjectiveReached],
   ['team14/prod/context/change/weather', onWeatherChange],
   ['team14/prod/context/change/air', onAirChange],
@@ -43,5 +43,8 @@ client.on('connect', () => {
 })
 
 client.on('message', (topic, message) => {
-  callbacks[topic](message)
+  if (!callbacks.get(topic)) {
+    return
+  }
+  callbacks.get(topic)(message)
 })
