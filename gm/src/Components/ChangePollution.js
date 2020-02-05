@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChangeWeather(props) {
+export default function ChangePollution(props) {
   const { updateAirQuality } = props;
   const classes = useStyles();
   const [pollution, setPollution] = React.useState("close");
