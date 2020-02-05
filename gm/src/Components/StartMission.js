@@ -69,7 +69,7 @@ export default function StartMission(props) {
   return (
     <div
       style={{
-        width: 600,
+        width: 'auto',
         height: "auto",
         padding: "10px",
         marginTop: "15px",
@@ -88,7 +88,7 @@ export default function StartMission(props) {
             multiline={true}
             rows={2}
             rowsMax={4}
-            label="Road"
+            label="Mission Text"
             onChange={handleChangeMissionText}
           />
           <TextField label='xCoordinate' onChange={handleChangeXCoordinate} />
