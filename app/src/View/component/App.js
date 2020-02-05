@@ -1,11 +1,13 @@
 import React from 'react'
 import Fab from '@material-ui/core/Fab'
+import Button from '@material-ui/core/Button'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NavigationIcon from '@material-ui/icons/Navigation'
 import SideMenu from './SideMenu/Menu'
 import Map from './Map/Map'
 import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
+import { resetCity } from '../../Mqtt/publisher';
 
 const theme = createMuiTheme({
   overrides: {
@@ -65,6 +67,7 @@ class App extends React.Component {
             selectItinerary={this.selectItinerary} />
           <Map />
           {currentItinerary && <ItineraryDetails itinerary={currentItinerary} />}
+          <Button onClick={() => resetCity()}>Click</Button>
         </div>
       </ThemeProvider>
     )
