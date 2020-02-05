@@ -11,6 +11,7 @@ import '../../Mqtt/controller';
 import '../statics/css/App.css';
 import '../../Mqtt/controller';
 import Title from './Title/Title';
+import MeteoBar from './MeteoBar/MeteoBar';
 import purple from '@material-ui/core/colors/purple';
 
 const theme = createMuiTheme({
@@ -68,6 +69,7 @@ class App extends React.Component {
           <Title 
             getBroker={this.getBroker}
           />
+          <MeteoBar />
           <SideTabs currentTab={currentTab} changeTab={this.changeTab} />
           <Tab isOpen={currentTab === 0} content={"Eco"} />
           <Tab isOpen={currentTab === 1} content={"Confort"} />
