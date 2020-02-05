@@ -1,12 +1,10 @@
 const client = require('./connection')
 
 // RESET
-export function resetCity () {
-  client.publish('team14/prod/city/reset', 'resetting')
-  sendStateUpdate();
+export function moveCharacter({vehicle_type = "walk", target}) {
+  client.publish('team14/prod/user/path', JSON.stringify({vehicle_type, target}))
 }
 
-function sendStateUpdate () {
-  console.log('sending state %s')
-  client.publish('team14/prod/city/reset')
+export function stopCharacter() {
+  client.publish('team14/prod/user/stop')
 }
