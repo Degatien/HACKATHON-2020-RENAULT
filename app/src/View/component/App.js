@@ -67,7 +67,7 @@ class App extends React.Component {
             submitDirection={this.submitDirection}
             itineraries={itineraries}
             selectItinerary={this.selectItinerary} />
-          <Map />
+          {/* <Map /> */}
           {currentItinerary && <ItineraryDetails itinerary={currentItinerary} />}
         </div>
       </ThemeProvider>
