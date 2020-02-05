@@ -25,14 +25,15 @@ const useStyles = makeStyles(theme => ({
 
 function ListOfPoints(props) {
   const { listOfEdges } = props;
-  console.log(listOfEdges)
   return (
     <List style={{ maxHeight: "300", overflow: "auto" }}>
       {listOfEdges.map((item, i) => {
         return (
           <ListItem key={i}>
             <ListItemText
-              primary={'( ' + item.x.toString() + ', ' + item.y.toString() + ' )' }
+              primary={
+                "( " + item.x.toString() + ", " + item.y.toString() + " )"
+              }
             />
           </ListItem>
         );
@@ -41,12 +42,12 @@ function ListOfPoints(props) {
   );
 }
 export default function StartMission(props) {
-  const { updateRoads } = props;
+  const { startMission } = props;
   const classes = useStyles();
-  const [missionText, setMissionText] = React.useState('');
+  const [missionText, setMissionText] = React.useState("");
   const [listOfEdges, setListOfEdges] = React.useState([]);
-  const [xCoordinate, setXCoordinate] = React.useState('');
-  const [yCoordinate, setYCoordinate] = React.useState('');
+  const [xCoordinate, setXCoordinate] = React.useState("");
+  const [yCoordinate, setYCoordinate] = React.useState("");
 
   const handleChangeXCoordinate = event => {
     setXCoordinate(event.target.value);
@@ -60,16 +61,22 @@ export default function StartMission(props) {
   const handleAdd = () => {
     setListOfEdges([
       ...listOfEdges,
-      { 'x':parseFloat(xCoordinate), 'y': parseFloat(yCoordinate)}
+      { x: parseFloat(xCoordinate), y: parseFloat(yCoordinate) }
     ]);
   };
 
- 
+  const handleValidate = () => {
+    const payload = {
+      mission: missionText,
+      positions: listOfEdges
+    };
+    startMission(payload);
+  };
 
   return (
     <div
       style={{
-        width: 'auto',
+        width: "auto",
         height: "auto",
         padding: "10px",
         marginTop: "15px",
@@ -83,7 +90,6 @@ export default function StartMission(props) {
       <h3> Start Mission</h3>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-
           <TextField
             multiline={true}
             rows={2}
@@ -91,14 +97,22 @@ export default function StartMission(props) {
             label="Mission Text"
             onChange={handleChangeMissionText}
           />
-          <TextField label='xCoordinate' type='number' onChange={handleChangeXCoordinate} />
-          <TextField label='yCoordinate' type='number' onChange={handleChangeYCoordinate} />
+          <TextField
+            label="xCoordinate"
+            type="number"
+            onChange={handleChangeXCoordinate}
+          />
+          <TextField
+            label="yCoordinate"
+            type="number"
+            onChange={handleChangeYCoordinate}
+          />
 
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Button variant="contained" onClick={handleAdd}>
               Add
             </Button>
-            <Button variant="contained" >
+            <Button variant="contained" onClick={handleValidate}>
               Validate
             </Button>
           </div>

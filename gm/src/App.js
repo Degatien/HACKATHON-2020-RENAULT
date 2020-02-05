@@ -7,7 +7,7 @@ import mqttClient from "./api/mqttClient";
 import OpenOrCloseSubway from "./Components/OpenOrCloseSubway";
 import CloseOrOpenRoad from "./Components/CloseOrOpenRoad";
 import ChangeWeather from "./Components/ChangeWeather";
-import StartMission from './Components/StartMission'
+import StartMission from "./Components/StartMission";
 function App() {
   return (
     <div
@@ -35,7 +35,7 @@ function App() {
       <ChangeWeather
         updateWeather={mqttClient.updateWeather.bind(mqttClient)}
       />
-      <StartMission/>
+      <StartMission startMission={mqttClient.startMission.bind(mqttClient)} />
     </div>
   );
 }

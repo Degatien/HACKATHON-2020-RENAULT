@@ -63,7 +63,7 @@ class MqttClient {
     );
   }
 
-  updateAirQuality(quality){
+  updateAirQuality(quality) {
     const topic = `${TEAM}/prod/context/change/air`;
     this.client.publish(
       topic,
@@ -71,6 +71,10 @@ class MqttClient {
     );
   }
 
+  startMission(payload) {
+    const topic = `${TEAM}/prod/user/mission`;
+    this.client.publish(topic, JSON.stringify(payload).toString());
+  }
 }
 
 export default new MqttClient();
