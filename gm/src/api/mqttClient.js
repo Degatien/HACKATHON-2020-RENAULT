@@ -62,6 +62,15 @@ class MqttClient {
       JSON.stringify({ condition: weather }).toString()
     );
   }
+
+  updateAirQuality(quality){
+    const topic = `${TEAM}/prod/context/change/air`;
+    this.client.publish(
+      topic,
+      JSON.stringify({ condition: quality }).toString()
+    );
+  }
+
 }
 
 export default new MqttClient();
