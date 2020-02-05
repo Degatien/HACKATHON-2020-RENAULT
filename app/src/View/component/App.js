@@ -7,8 +7,9 @@ import SideMenu from './SideMenu/Menu'
 import Map from './Map/Map'
 import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
-import { resetCity } from '../../Mqtt/publisher';
-import '../../Mqtt/controller';
+// import { resetCity } from '../../Mqtt/publisher';
+// import '../../Mqtt/controller';
+import { getSituation } from '../../Api/Agent';
 
 const theme = createMuiTheme({
   overrides: {
@@ -68,7 +69,6 @@ class App extends React.Component {
             selectItinerary={this.selectItinerary} />
           <Map />
           {currentItinerary && <ItineraryDetails itinerary={currentItinerary} />}
-          <Button onClick={() => resetCity()}>Click</Button>
         </div>
       </ThemeProvider>
     )
