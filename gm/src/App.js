@@ -6,6 +6,7 @@ import ChangeTrafficCondition from "./Components/ChangeTrafficCondition";
 import mqttClient from "./api/mqttClient";
 import OpenOrCloseSubway from "./Components/OpenOrCloseSubway";
 import CloseOrOpenRoad from "./Components/CloseOrOpenRoad";
+import ChangeWeather from './Components/ChangeWeather'
 function App() {
   return (
     <div
@@ -25,6 +26,8 @@ function App() {
         updateMetroLine={mqttClient.updateMetroLine.bind(mqttClient)}
       />
       <CloseOrOpenRoad updateRoads={mqttClient.updateRoads.bind(mqttClient)} />
+      <ChangeWeather/>
+
     </div>
   );
 }
