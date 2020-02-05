@@ -7,7 +7,7 @@ import mqqtClient from './api/mqttClient'
 function App() {
   return (
     <div style={{ display:'flex', flexDirection:'column', }} >
-      <LinkButton variant="full" onClickFunction={mqqtClient.reset()}/>
+      <LinkButton variant="full" onClickFunction={() => mqqtClient.reset()}/>
     </div>
   )
 }

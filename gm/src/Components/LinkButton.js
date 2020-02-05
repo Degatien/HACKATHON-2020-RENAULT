@@ -7,7 +7,7 @@ export default function LinkButton(props) {
     <Button
       style={{ width: "20%" }}
       variant="contained"
-      onClick={onClickFunction}
+      onClick={() => onClickFunction()}
     >
       {" "}
       RESET
