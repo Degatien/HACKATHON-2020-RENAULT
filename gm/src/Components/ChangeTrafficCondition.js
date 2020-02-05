@@ -3,7 +3,7 @@ import { TextField, Button } from '@material-ui/core';
 
 
 
-export default function Teleport(props) {
+export default function ChangeTrafficCondtion(props) {
   const [edge, setEdge] = React.useState('');
   const [slowingFactor, setSlowingFactor] = React.useState('');
 
