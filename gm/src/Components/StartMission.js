@@ -80,7 +80,7 @@ export default function StartMission(props) {
         boxShadow: "10px 5px 5px grey"
       }}
     >
-      <h3> Close or open roads</h3>
+      <h3> Start Mission</h3>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
 
