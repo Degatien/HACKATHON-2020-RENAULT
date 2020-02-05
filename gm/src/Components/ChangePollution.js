@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ChangeWeather(props) {
-  const { updateWeather } = props;
+  const { updateAirQuality } = props;
   const classes = useStyles();
   const [pollution, setPollution] = React.useState("close");
 
@@ -25,15 +25,19 @@ export default function ChangeWeather(props) {
     setPollution(event.target.value);
   };
 
+  const handleValidate = () => {
+    updateAirQuality(pollution);
+  };
+
   return (
     <div
       style={{
         width: 300,
         height: 170,
-        padding:10,
-        marginTop:'15px', 
-        marginRight: 'auto', 
-        marginLeft:'auto',
+        padding: 10,
+        marginTop: "15px",
+        marginRight: "auto",
+        marginLeft: "auto",
         display: "flex",
         flexDirection: "column",
         borderRadius: "3%",
@@ -42,10 +46,9 @@ export default function ChangeWeather(props) {
       }}
     >
       <h3> Set Pollution</h3>
-     
 
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Weather</InputLabel>
+        <InputLabel id="demo-simple-select-label">Pollution</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -56,7 +59,7 @@ export default function ChangeWeather(props) {
           <MenuItem value={"pollution peak"}>Pollution peak</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained"  >
+      <Button variant="contained" onClick={handleValidate}>
         Validate
       </Button>
     </div>
