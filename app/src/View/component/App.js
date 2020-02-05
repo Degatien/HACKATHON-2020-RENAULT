@@ -3,7 +3,9 @@ import Fab from '@material-ui/core/Fab'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NavigationIcon from '@material-ui/icons/Navigation'
 import SideMenu from './SideMenu/Menu'
-import '../css/App.css';
+import Map from './Map/Map'
+import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
+import '../statics/css/App.css';
 
 const theme = createMuiTheme({
   overrides: {
@@ -41,11 +43,12 @@ class App extends React.Component {
 
   selectItinerary(itinerary) {
     this.closeMenu()
+    this.setState({currentItinerary: itinerary})
     console.log(`Itinerary "${itinerary}" selected.`)
   }
 
   render() {
-    const {menuOpen, itineraries} = this.state
+    const {menuOpen, itineraries, currentItinerary} = this.state
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -60,6 +63,8 @@ class App extends React.Component {
             submitDirection={this.submitDirection}
             itineraries={itineraries}
             selectItinerary={this.selectItinerary} />
+          <Map />
+          {currentItinerary && <ItineraryDetails itinerary={currentItinerary} />}
         </div>
       </ThemeProvider>
     )
