@@ -14,7 +14,7 @@ function App() {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
-        gridGap: "3rem",
+        gridGap: "1rem",
         gridAutoRows: "minmax(100px, auto)"
       }}
     >
