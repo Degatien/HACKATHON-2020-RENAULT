@@ -91,8 +91,8 @@ export default function StartMission(props) {
             label="Mission Text"
             onChange={handleChangeMissionText}
           />
-          <TextField label='xCoordinate' onChange={handleChangeXCoordinate} />
-          <TextField label='yCoordinate' onChange={handleChangeYCoordinate} />
+          <TextField label='xCoordinate' type='number' onChange={handleChangeXCoordinate} />
+          <TextField label='yCoordinate' type='number' onChange={handleChangeYCoordinate} />
 
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Button variant="contained" onClick={handleAdd}>

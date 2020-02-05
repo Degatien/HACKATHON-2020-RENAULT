@@ -55,8 +55,8 @@ export default function Teleport(props) {
           <MenuItem value={'subway'}>Subway</MenuItem>
         </Select>
       </FormControl>
-      <TextField label='xCoordinate' onChange={handleChangeXCoordinate}/>
-      <TextField label='yCoordinate' onChange={handleChangeYCoordinate}/>
+      <TextField label='xCoordinate' type='number' onChange={handleChangeXCoordinate}/>
+      <TextField label='yCoordinate' type='number' onChange={handleChangeYCoordinate}/>
       <Button variant='contained' onClick={handleValidate}>Validate</Button>
 
     </div>
