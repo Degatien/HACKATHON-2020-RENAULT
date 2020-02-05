@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function OpenOrCloseSubway(props) {
+export default function ChangeWeather(props) {
   const classes = useStyles();
   const [weather, setWeather] = React.useState("close");
 
