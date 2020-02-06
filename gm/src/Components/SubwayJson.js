@@ -3,7 +3,7 @@ import useSWR from "swr";
 const fetcher = url => fetch(url).then(r => r.json());
 
 export default function SubwayJson() {
-  const { data: subway, error } = useSWR(
+  const { subway, error } = useSWR(
     "http://team14.xp65.renault-digital.com/api/graph/processed/subway.json",
     fetcher
   );
