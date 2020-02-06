@@ -1,3 +1,5 @@
+import { getRoadStatusCar } from '../Api/Path';
+
 const client = require('./connection')
 
 function onLineStateChange(payload) {
@@ -5,6 +7,9 @@ function onLineStateChange(payload) {
 }
 function onRoadStatusChange(payload) {
   console.log(payload)
+  getRoadStatusCar().then(value => {
+    console.log(value);
+  })
 }
 function onObjectiveReached(payload) {
   console.log(payload)
