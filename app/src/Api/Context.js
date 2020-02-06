@@ -8,6 +8,7 @@ export function getMeteo() {
       return data && (data.data || null);
     })
     .catch(error => {
+      console.log(error);
       throw new Error("Context meteo");
     })
 }
@@ -18,6 +19,7 @@ export function getAirQuality() {
       return data && (data.data || null);
     })
     .catch(error => {
-      throw new Error("Context meteo");
-    })
+      console.log(error);
+      throw new Error("Context ait quality");
+    })  
 }
