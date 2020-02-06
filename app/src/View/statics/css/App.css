@@ -44,3 +44,7 @@
 .tabs {
   width: 250px;
 }
+
+.tab {
+  flex: 1;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import NavigationIcon from '@material-ui/icons/Navigation'
+import Box from '@material-ui/core/Box'
 import SideTabs from './SideTabs/SideTabs'
 import Tab from './SideTabs/Tab'
+import AlertBox from './AlertBox/AlertBox'
 // import Map from './Map/Map'
 import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
@@ -13,6 +14,7 @@ import '../../Mqtt/controller';
 import Title from './Title/Title';
 import MeteoBar from './MeteoBar/MeteoBar';
 import purple from '@material-ui/core/colors/purple';
+import Alert from '@material-ui/lab/Alert';
 
 const theme = createMuiTheme({
   palette: {
@@ -21,6 +23,7 @@ const theme = createMuiTheme({
       main: '#7e57c2',
     },
   },
+  spacing: 8,
 });
 
 class App extends React.Component {
@@ -33,6 +36,11 @@ class App extends React.Component {
       domain: "",
       username: "",
       password: "",
+      alerts: [
+        {severity: 'info', message: 'Il fait beau, vous devriez prendre le trajet éco.'},
+        {severity: 'warning', message: 'Il y a des embouteillages, vous devirez prendre le trajet éco.'},
+        {severity: 'error', message: 'L\'air est polué, vous devriez prendre le trajet confort'}
+      ]
     }
     this.submitDirection = this.submitDirection.bind(this)
     this.selectItinerary = this.selectItinerary.bind(this)
@@ -62,18 +70,28 @@ class App extends React.Component {
   }
 
   render() {
-    const {currentTab} = this.state
+    const {currentTab, alerts} = this.state
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Title 
+          <Title
             getBroker={this.getBroker}
           />
           <MeteoBar />
+          <Box name='Body' display="flex">
+
           <SideTabs currentTab={currentTab} changeTab={this.changeTab} />
-          <Tab isOpen={currentTab === 0} content={"Eco"} />
-          <Tab isOpen={currentTab === 1} content={"Confort"} />
-          <Tab isOpen={currentTab === 2} content={"Rapidité"} />
+          {alerts && alerts.length !== 0 && (
+            <Box flexGrow={0.4} p={5} pr={0}>
+              <AlertBox alerts={alerts} />
+            </Box>)}
+            <Box flexGrow={1} p={5}>
+              <Tab isOpen={currentTab === 0} content={"This is the \"Eco\" itinerary, please enjoy it and thank you for saving the planet and your body."} />
+              <Tab isOpen={currentTab === 1} content={"Confort"} />
+              <Tab isOpen={currentTab === 2} content={"Rapidité"} />
+            </Box>
+            </Box>
+
           </div>
       </ThemeProvider>
     )
