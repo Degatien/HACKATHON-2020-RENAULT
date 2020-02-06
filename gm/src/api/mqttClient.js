@@ -52,6 +52,7 @@ class MqttClient {
 
   updateRoads(roads) {
     const topic = `${TEAM}/prod/city/morph/roads_status`;
+    console.log(JSON.stringify(roads).toString())
     this.client.publish(topic, JSON.stringify(roads).toString());
   }
 
@@ -73,6 +74,7 @@ class MqttClient {
 
   startMission(payload) {
     const topic = `${TEAM}/prod/user/mission`;
+    console.log(JSON.stringify(payload).toString())
     this.client.publish(topic, JSON.stringify(payload).toString());
   }
 

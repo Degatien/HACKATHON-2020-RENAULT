@@ -64,26 +64,29 @@ export default function OpenOrCloseSubway(props) {
   };
 
   const handleValidate = () => {
-    const payload = {
+    const payload = [
+      {
       bike: listOfEdges
         .filter(e => e.transport === "bike")
         .map(e => ({
-          road: e.edge,
+          road: 'edge_' + e.edge,
           state: e.state
-        })),
+        }))},
+        {
       car: listOfEdges
         .filter(e => e.transport === "car")
         .map(e => ({
-          road: e.edge,
+          road: 'edge_' + e.edge,
           state: e.state
-        })),
+        }))},
+      {
       walk: listOfEdges
         .filter(e => e.transport === "walk")
         .map(e => ({
-          road: e.edge,
+          road: 'edge_' + e.edge,
           state: e.state
-        }))
-    };
+        }))}
+      ];
     updateRoads(payload);
   };
 
