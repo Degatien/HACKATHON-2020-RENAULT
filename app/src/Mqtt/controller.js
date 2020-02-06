@@ -22,7 +22,7 @@ export function Subscribe (Component) {
       ])
       this.toConnect();
 
-      this.state = {roadAlerts:[]}
+      this.state = {roadAlerts:[], missionAlert:[]}
 
       this.toConnect= this.toConnect.bind(this);
     }
@@ -58,8 +58,10 @@ export function Subscribe (Component) {
     }
     onMissionArrived = (payload) => {
       console.log(payload.toString())
+      const mis = JSON.parse(payload.toString())
       this.setState({
-        mission: JSON.parse(payload.toString())
+        mission: JSON.parse(payload.toString()),
+        missionAlert: [{severity: "info", message: `You received a new mission: ${mis.mission}`}],
       })
     }
     toConnect(domain="wss://mr1dns3dpz5mjj.messaging.solace.cloud:8443", user="team14", pass="cniueargfe") {
@@ -86,7 +88,11 @@ export function Subscribe (Component) {
       })
     }
     render() {
-      return <Component roadAlerts={this.state.roadAlerts} mission={this.state.mission} toConnect={this.toConnect}/>
+      return <Component 
+        roadAlerts={this.state.roadAlerts} 
+        missionAlert={this.state.missionAlert} 
+        mission={this.state.mission} 
+        toConnect={this.toConnect}/>
     }
   }
 }

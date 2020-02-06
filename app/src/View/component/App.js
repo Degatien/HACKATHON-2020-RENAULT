@@ -68,8 +68,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {roadAlerts, mission} = this.props
-    const alerts = roadAlerts;
+    const {roadAlerts, mission, missionAlert} = this.props
+    const alerts = roadAlerts.concat(missionAlert);
     const {currentTab} = this.state
     return (
       <ThemeProvider theme={theme}>
