@@ -37,11 +37,6 @@ class App extends React.Component {
       domain: "",
       username: "",
       password: "",
-      alerts: [
-        {severity: 'info', message: 'Il fait beau, vous devriez prendre le trajet éco.'},
-        {severity: 'warning', message: 'Il y a des embouteillages, vous devirez prendre le trajet éco.'},
-        {severity: 'error', message: 'L\'air est polué, vous devriez prendre le trajet confort'}
-      ]
     }
     this.submitDirection = this.submitDirection.bind(this)
     this.selectItinerary = this.selectItinerary.bind(this)
@@ -73,7 +68,9 @@ class App extends React.Component {
   }
 
   render() {
-    const {currentTab, alerts} = this.state
+    const {roadAlerts, mission} = this.props
+    const alerts = roadAlerts;
+    const {currentTab} = this.state
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
