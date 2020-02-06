@@ -8,13 +8,14 @@ import AlertBox from './AlertBox/AlertBox'
 import ItineraryDetails from './ItineraryDetails/ItineraryDetails'
 import '../statics/css/App.css';
 import { moveCharacter, stopCharacter } from '../../Mqtt/publisher';
-import '../../Mqtt/controller';
+import { Subscribe } from '../../Mqtt/controller';
 import '../statics/css/App.css';
 import '../../Mqtt/controller';
 import Title from './Title/Title';
 import MeteoBar from './MeteoBar/MeteoBar';
 import purple from '@material-ui/core/colors/purple';
 import Alert from '@material-ui/lab/Alert';
+import Api from '../../Api/'
 
 const theme = createMuiTheme({
   palette: {
@@ -58,11 +59,13 @@ class App extends React.Component {
   }
 
   getBroker = (domain, username, password) => {
+    this.props.toConnect(domain, username, password)
     this.setState({
       domain: domain,
       username: username,
       password: password
     })
+
   }
 
   changeTab(event, newTab) {
@@ -99,4 +102,4 @@ class App extends React.Component {
 }
 
 
-export default App
+export default Subscribe(App)
