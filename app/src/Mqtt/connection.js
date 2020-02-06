@@ -1,8 +1,20 @@
+/*
 const mqtt = require('mqtt');
 
-const client = mqtt.connect('wss://mr1dns3dpz5mjj.messaging.solace.cloud:8443', {
-  username: 'team14',
-  password: 'cniueargfe'
-});
+let client
 
-module.exports = client
+export function toConnect(domain="wss://mr1dns3dpz5mjj.messaging.solace.cloud:8443", user="team14", pass="cniueargfe") {
+  console.log(domain,  user, pass)
+  if (client) {
+    console.log("disconnecting")
+    client.end();
+  }
+  client = mqtt.connect(domain, {
+    username: user,
+    password: pass
+  });
+}
+
+toConnect()
+export function getClient() {return client}
+*/
